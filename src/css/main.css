@@ -1,0 +1,95 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow-y: auto;
+    padding: 10px;
+    overflow-x: hidden;
+}
+
+.infoForm {
+    display: flex;
+    align-items: center;
+}
+
+.elevator-system{
+    display: flex;
+    flex-direction: column-reverse;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: flex-start;
+    /* Align items to the start */
+}
+
+.floor {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid black;
+    /* width: 100%; */
+    min-width: 500px;
+    /* width: auto;  */
+    height: 60px;
+    justify-content: space-between;
+}
+
+.floorLabel {
+    position: absolute;
+    right: 30px;
+}
+
+.floor>button {
+    margin: 10px;
+    flex-direction: column;
+    display: flex;
+}
+
+.up,
+.down {
+    background-color: green;
+    color: black;
+}
+
+.down {
+    background-color: yellow;
+}
+
+.elevator {
+    white-space: nowrap; 
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    background-color: blue;
+    margin: 10px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.door {
+    width: 50%;
+    height: 100%;
+    background-color: whitesmoke;
+    position: absolute;
+    transition: transform 2.5s ease-in-out;
+    border: 0;
+}
+
+.left {
+    transform-origin: right;
+}
+
+.right {
+    right: 0;
+    transform-origin: left;
+}
+
+.door.open {
+    transform: scaleX(0);
+}
+
+.elevatorDiv {
+    display: flex;
+    margin: 50px;
+}
