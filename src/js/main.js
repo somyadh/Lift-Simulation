@@ -152,6 +152,7 @@ function moveElevator(nearestElevator, requestedFloor, floorDiff) {
 }
 
 function backToInfoForm() {
+    document.getElementById('elevator-system').replaceChildren();
     document.getElementsByClassName('infoForm')[0].style.display = 'block';
     document.getElementById('elevator-system').style.display = 'none';
 }
