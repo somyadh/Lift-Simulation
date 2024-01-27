@@ -2,13 +2,13 @@ let elevatorsData = [];
 let callQueue = [];
 
 function validateForm(floorCount, elevatorCount) {
-    if (floorCount < 1 || floorCount > 12) {
-        alert("Floor count must be between 1 and 12");
+    if (floorCount < 1 || floorCount > 100) {
+        alert("Floor count must be between 1 and 100");
         return false;
     }
 
-    if (elevatorCount < 1 || elevatorCount > 6) {
-        alert("Elevator count must be between 1 and 6");
+    if (elevatorCount < 1 || elevatorCount > 15) {
+        alert("Elevator count must be between 1 and 20");
         return false;
     }
 
