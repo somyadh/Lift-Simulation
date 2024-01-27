@@ -8,7 +8,7 @@ function validateForm(floorCount, elevatorCount) {
     }
 
     if (elevatorCount < 1 || elevatorCount > 15) {
-        alert("Elevator count must be between 1 and 20");
+        alert("Elevator count must be between 1 and 15");
         return false;
     }
 
