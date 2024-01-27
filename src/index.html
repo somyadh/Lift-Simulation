@@ -9,9 +9,9 @@
   <form onsubmit="event.preventDefault();">
     <div>
       <label for="floorCount">Number of floors: </label>
-      <input type="number" id="floorCount" name="floorCount" required min="1" max="12"/>
+      <input type="number" id="floorCount" name="floorCount" required/>
       <label for="elevatorCount">Number of elevators: </label>
-      <input type="number" id="elevatorCount" name="elevatorCount" required min="1" max="6"/>
+      <input type="number" id="elevatorCount" name="elevatorCount" required/>
       <input type="submit" value="Send" class="submit-btn" onclick="validateForm(document.getElementById('floorCount').value, document.getElementById('elevatorCount').value)" />
     </div>
   </form>

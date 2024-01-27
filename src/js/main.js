@@ -70,6 +70,14 @@ function add(floorCount, elevatorCount) {
         floordiv.appendChild(elevatorDiv)
         document.getElementById('elevator-system').appendChild(floordiv);
     };
+
+    //add back button to go back to form page
+    let backButton = document.createElement('button');
+    backButton.setAttribute('type', 'submit');
+    backButton.innerHTML = 'Back';
+    backButton.onclick = () => backToInfoForm();
+    document.getElementById('elevator-system').appendChild(backButton)
+
     document.getElementsByClassName('infoForm')[0].style.display = 'none';
     document.getElementById('elevator-system').style.display = 'block';
     defaultElevatorData()
@@ -100,7 +108,6 @@ function addElevatorCallRequest(floor) {
     callQueue.push(floor)
     processCallRequests()
 }
-
 
 function processCallRequests() {
     if (callQueue.length === 0)
@@ -136,11 +143,15 @@ function processCallRequests() {
     }, 2000 * floorDiff); // wait before elevator reaches floor
 }
 
-
 function moveElevator(nearestElevator, requestedFloor, floorDiff) {
     let elevatorElement = nearestElevator;
     const elevatorHeight = elevatorElement.offsetHeight;
     //floor height is 60px and elevator ht is 50 and keeping 1 as margin
     elevatorElement.style.transform = `translateY(-${(requestedFloor) * (elevatorHeight + 11)}px)`
     elevatorElement.style.transition = `transform ${2 * floorDiff}s ease`;
+}
+
+function backToInfoForm() {
+    document.getElementsByClassName('infoForm')[0].style.display = 'block';
+    document.getElementById('elevator-system').style.display = 'none';
 }
