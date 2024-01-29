@@ -16,12 +16,19 @@ function validateForm(floorCount, elevatorCount) {
     add(floorCount, elevatorCount);
 }
 function add(floorCount, elevatorCount) {
+
+    //add back button to go back to form page
+    let backButton = document.createElement('button');
+    backButton.setAttribute('type', 'submit');
+    backButton.innerHTML = 'Back';
+    backButton.onclick = () => backToInfoForm();
+
+    document.getElementById('elevator-system').appendChild(backButton)
+
     for (let i = parseInt(floorCount); i >= 0; i--) {
         let floordiv = document.createElement('div');
         floordiv.className = "floor"
         let buttondiv = document.createElement('div');
-        let elevatorDiv = document.createElement('div');
-        elevatorDiv.className = "elevatorDiv"
 
         let upbutton = document.createElement('button');
         upbutton.setAttribute('type', 'submit');
@@ -39,9 +46,10 @@ function add(floorCount, elevatorCount) {
         downButton.innerHTML = 'Down'
         downButton.onclick = (event) => addElevatorCallRequest(event.target.getAttribute('floor'));
 
+        let floorLabelDiv =  document.createElement('div');
         let floorLabel = document.createElement('h5');
-        floorLabel.className = 'floorLabel';
         floorLabel.textContent = `Floor ${i}`;
+        floorLabelDiv.appendChild(floorLabel)
 
         if (i == 0) {
             buttondiv.appendChild(upbutton)
@@ -52,7 +60,11 @@ function add(floorCount, elevatorCount) {
             buttondiv.appendChild(downButton)
         }
 
+        floordiv.appendChild(buttondiv)
+
+        //add elevator div
         if (i === 0) {
+            let elevatorDiv = document.createElement('div');
             for (let j = 0; j < parseInt(elevatorCount); j++) {
                 let elevator = document.createElement("div")
                 elevator.className = 'elevator'
@@ -63,21 +75,15 @@ function add(floorCount, elevatorCount) {
                 <div class="door right open"></div>`;
                 elevatorDiv.append(elevator)
             }
+            elevatorDiv.className = "elevatorDiv"
+            floordiv.appendChild(elevatorDiv)
         }
-
-        floordiv.appendChild(buttondiv)
-        floordiv.appendChild(floorLabel)
-        floordiv.appendChild(elevatorDiv)
+        floordiv.appendChild(floorLabelDiv)
+           
         document.getElementById('elevator-system').appendChild(floordiv);
     };
 
-    //add back button to go back to form page
-    let backButton = document.createElement('button');
-    backButton.setAttribute('type', 'submit');
-    backButton.innerHTML = 'Back';
-    backButton.onclick = () => backToInfoForm();
-    document.getElementById('elevator-system').appendChild(backButton)
-
+   
     document.getElementsByClassName('infoForm')[0].style.display = 'none';
     document.getElementById('elevator-system').style.display = 'block';
     defaultElevatorData()
@@ -148,7 +154,7 @@ function moveElevator(nearestElevator, requestedFloor, floorDiff) {
     const elevatorHeight = elevatorElement.offsetHeight;
     //floor height is 60px and elevator ht is 50 and keeping 1 as margin
     elevatorElement.style.transform = `translateY(-${(requestedFloor) * (elevatorHeight + 11)}px)`
-    elevatorElement.style.transition = `transform ${2 * floorDiff}s ease`;
+    elevatorElement.style.transition = `transform ${2 * floorDiff}s ease-in-out`;
 }
 
 function backToInfoForm() {
